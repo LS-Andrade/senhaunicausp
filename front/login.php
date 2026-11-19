@@ -96,12 +96,25 @@ if (isset($_GET['oauth_token'], $_GET['oauth_verifier'])) {
          }
       }
 
+      $vinculosUSP = $details['vinculo'] ?? [];
+      $vinculoFSP = array_search(6, array_column($vinculosUSP, 'codigoUnidade'));
+
+      // EXTERNOS FSP
+      $location = 14;
+
+      if( $vinculoFSP !== false && isset($vinculosUSP[$vinculoFSP]['codigoSetor'])) {
+         // Se o usuário tiver vínculo com a FSP, define a localização de acordo com o setor da FSP
+         $codigoSetor = $vinculosUSP[$vinculoFSP]['codigoSetor'];
+         $location = $config->locationBySector($codigoSetor);
+      }
+
       $input = [
          'name'     => $nusp,
          'realname' => $sobreNome,
          'firstname' => $primeiroNome,
          'authtype' => Auth::EXTERNAL,
          'is_active' => 1,
+         'location_id' => $location,
       ];
       if ($email !== '') {
          $input['_useremails'] = [-1 => $email];

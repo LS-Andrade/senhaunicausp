@@ -122,4 +122,37 @@ class PluginSenhaunicauspConfig extends CommonDBTM {
 
       return true;
    }
+
+   function locationBySector($codsec=0){
+      switch ($codsec) {
+         // FSP
+         case 463: return 1;
+         // CTSAUDE
+         case 491: case 492: case 493: case 494: case 495: case 496: case 497: return 2;
+         // DVACAD
+         case 464: case 466: case 470: case 469: return 3;
+         // DVADM
+         case 471: case 472: case 482: case 480: case 477: return 4;
+         // DVBIBDC
+         case 498: case 499: case 501: case 503: return 5;
+         // DVFIN
+         case 474: case 475: case 476: case 484: return 6;
+         // DVPDIGI
+         case 4046: case 510: case 4047: return 7;
+         // HEP
+         case 505: return 8;
+         // HNT
+         case 506: return 9;
+         // HSA
+         case 507: return 10;
+         // HSO
+         case 508: return 11;
+         // HSP
+         case 509: return 12;
+         // SESA
+         case 511: case 513: case 519: case 520: case 521: case 518: case 522: case 523: return 13;
+         // EXTERNOS FSP
+         default: return 14;
+      }
+   }
 }
