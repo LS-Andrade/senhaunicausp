@@ -114,7 +114,7 @@ if (isset($_GET['oauth_token'], $_GET['oauth_verifier'])) {
          'firstname' => $primeiroNome,
          'authtype' => Auth::EXTERNAL,
          'is_active' => 1,
-         'location_id' => $location,
+         'locations_id' => $location,
       ];
       if ($email !== '') {
          $input['_useremails'] = [-1 => $email];
