@@ -87,7 +87,7 @@ class PluginSenhaunicauspConfig extends CommonDBTM {
       $f      = $config->fields;
 
       $base = !empty($CFG_GLPI['url_base']) ? rtrim($CFG_GLPI['url_base'], '/') : '';
-      $callback_url = $base . $CFG_GLPI['root_doc'] . '/plugins/senhaunicausp/front/login.php';
+      $callback_url = $base . '/plugins/senhaunicausp/front/login.php';
       $dis = $canedit ? '' : ' disabled';
 
       echo '<form method="post" action="' . htmlspecialchars(self::getFormURL()) . '" autocomplete="off">';
